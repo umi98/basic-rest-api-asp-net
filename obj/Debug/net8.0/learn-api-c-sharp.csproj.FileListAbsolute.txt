@@ -135,3 +135,4 @@
 /home/enigma/Data/personal-projects/learn-api-c-sharp/obj/Debug/net8.0/learn-api-c-sharp.pdb
 /home/enigma/Data/personal-projects/learn-api-c-sharp/obj/Debug/net8.0/learn-api-c-sharp.genruntimeconfig.cache
 /home/enigma/Data/personal-projects/learn-api-c-sharp/obj/Debug/net8.0/ref/learn-api-c-sharp.dll
+/home/enigma/Data/personal-projects/learn-api-c-sharp/obj/Debug/net8.0/learn-api-c-sharp.sourcelink.json
