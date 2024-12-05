@@ -30,7 +30,7 @@ namespace learn_api_c_sharp.Controllers
             return Ok(commentDto);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var comment = await _commentRepository.GetByIdAsync(id);
@@ -38,9 +38,11 @@ namespace learn_api_c_sharp.Controllers
             return Ok(comment.ToCommentDto());
         }
 
-        [HttpPost("{stockId}")]
+        [HttpPost("{stockId:int}")]
         public async Task<IActionResult> Create([FromRoute] int stockId, [FromBody] CreateCommentRequest request)
         {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
             bool IsExist = await _stockRepository.IsExist(stockId);
             if (!IsExist) return BadRequest("Stock does not exist");
             
@@ -50,15 +52,17 @@ namespace learn_api_c_sharp.Controllers
             return CreatedAtAction(nameof(GetById), new {id = commentModel.Id}, commentModel.ToCommentDto());
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateCommentRequest request)
         {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            
             var comment = await _commentRepository.UpdateAsync(id, request.ToCommentFromUpdate());
             if (comment == null) return NotFound("Comment not found");
             return Ok(comment.ToCommentDto());
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var comment = await _commentRepository.DeleteByIdAsync(id);

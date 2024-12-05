@@ -15,6 +15,6 @@ namespace learn_api_c_sharp.DTOs.Stock
         public decimal LastDive { get; set; }
         public string Industry { get; set; } = string.Empty;
         public long MarketCap { get; set; }
-        public List<CommentDto> Comments { get; set; }
+        public List<CommentDto> Comments { get; set; } = [];
     }
 }

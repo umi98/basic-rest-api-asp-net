@@ -35,7 +35,7 @@ namespace learn_api_c_sharp.Controllers
             return Ok(stockDto);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute]int id)
         {
             var stock = await _stockRepo.GetByIdAsync(id);
@@ -49,14 +49,18 @@ namespace learn_api_c_sharp.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateStockRequest stockDto)
         {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            
             var stockModel = stockDto.ToStockFromCreateDTO();
             await _stockRepo.CreateAsync(stockModel);
             return CreatedAtAction(nameof(GetById), new {id = stockModel.Id}, stockModel.ToStockDto());
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public async Task<IActionResult> Update([FromBody] UpdateStockRequest request, [FromRoute] int id)
         {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
             var stock = await _stockRepo.UpdateAsync(id, request);
             if (stock == null)
             {
@@ -65,7 +69,7 @@ namespace learn_api_c_sharp.Controllers
             return Ok(stock.ToStockDto());
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var stock = await _stockRepo.DeleteByIdAsync(id);
