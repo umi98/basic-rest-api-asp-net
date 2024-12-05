@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using learn_api_c_sharp.Data;
 using learn_api_c_sharp.DTOs.Stock;
+using learn_api_c_sharp.Helper;
 using learn_api_c_sharp.Interfaces;
 using learn_api_c_sharp.Mappers;
 using Microsoft.AspNetCore.Mvc;
@@ -28,9 +29,9 @@ namespace learn_api_c_sharp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
         {
-            var stocks = await _stockRepo.GetAllAsync();
+            var stocks = await _stockRepo.GetAllAsync(query);
             var stockDto = stocks.Select(s => s.ToStockDto());
             return Ok(stockDto);
         }
@@ -50,7 +51,7 @@ namespace learn_api_c_sharp.Controllers
         public async Task<IActionResult> Create([FromBody] CreateStockRequest stockDto)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            
+
             var stockModel = stockDto.ToStockFromCreateDTO();
             await _stockRepo.CreateAsync(stockModel);
             return CreatedAtAction(nameof(GetById), new {id = stockModel.Id}, stockModel.ToStockDto());
