@@ -14,5 +14,6 @@ namespace learn_api_c_sharp.Interfaces
         Task<Stock> CreateAsync(Stock stock);
         Task<Stock?> UpdateAsync(int id, UpdateStockRequest request);
         Task<Stock?> DeleteByIdAsync(int id);
+        Task<bool> IsExist(int id);
     }
 }

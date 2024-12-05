@@ -136,3 +136,7 @@
 /home/enigma/Data/personal-projects/learn-api-c-sharp/obj/Debug/net8.0/learn-api-c-sharp.genruntimeconfig.cache
 /home/enigma/Data/personal-projects/learn-api-c-sharp/obj/Debug/net8.0/ref/learn-api-c-sharp.dll
 /home/enigma/Data/personal-projects/learn-api-c-sharp/obj/Debug/net8.0/learn-api-c-sharp.sourcelink.json
+/home/enigma/Data/personal-projects/learn-api-c-sharp/bin/Debug/net8.0/Microsoft.AspNetCore.JsonPatch.dll
+/home/enigma/Data/personal-projects/learn-api-c-sharp/bin/Debug/net8.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/home/enigma/Data/personal-projects/learn-api-c-sharp/bin/Debug/net8.0/Newtonsoft.Json.dll
+/home/enigma/Data/personal-projects/learn-api-c-sharp/bin/Debug/net8.0/Newtonsoft.Json.Bson.dll

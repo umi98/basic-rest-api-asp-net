@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using learn_api_c_sharp.DTOs.Comment;
 
 namespace learn_api_c_sharp.DTOs.Stock
 {
@@ -14,5 +15,6 @@ namespace learn_api_c_sharp.DTOs.Stock
         public decimal LastDive { get; set; }
         public string Industry { get; set; } = string.Empty;
         public long MarketCap { get; set; }
+        public List<CommentDto> Comments { get; set; }
     }
 }

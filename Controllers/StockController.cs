@@ -39,12 +39,11 @@ namespace learn_api_c_sharp.Controllers
         public async Task<IActionResult> GetById([FromRoute]int id)
         {
             var stock = await _stockRepo.GetByIdAsync(id);
-            var stockDto = stock.ToStockDto();
             if (stock == null)
             {
                 return NotFound();
             }
-            return Ok(stockDto);
+            return Ok(stock.ToStockDto());
         }
 
         [HttpPost]
