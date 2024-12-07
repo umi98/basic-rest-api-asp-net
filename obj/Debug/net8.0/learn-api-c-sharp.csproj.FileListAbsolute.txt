@@ -140,3 +140,5 @@
 /home/enigma/Data/personal-projects/learn-api-c-sharp/bin/Debug/net8.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 /home/enigma/Data/personal-projects/learn-api-c-sharp/bin/Debug/net8.0/Newtonsoft.Json.dll
 /home/enigma/Data/personal-projects/learn-api-c-sharp/bin/Debug/net8.0/Newtonsoft.Json.Bson.dll
+/home/enigma/Data/personal-projects/learn-api-c-sharp/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/enigma/Data/personal-projects/learn-api-c-sharp/bin/Debug/net8.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

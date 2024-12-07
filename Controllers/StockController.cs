@@ -8,6 +8,7 @@ using learn_api_c_sharp.DTOs.Stock;
 using learn_api_c_sharp.Helper;
 using learn_api_c_sharp.Interfaces;
 using learn_api_c_sharp.Mappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -17,6 +18,7 @@ namespace learn_api_c_sharp.Controllers
 {
     [Route("api/stock")]
     [ApiController]
+    [Authorize]
     public class StockController : Controller
     {
         private readonly ApplicationDBContext _context;
@@ -32,7 +34,7 @@ namespace learn_api_c_sharp.Controllers
         public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
         {
             var stocks = await _stockRepo.GetAllAsync(query);
-            var stockDto = stocks.Select(s => s.ToStockDto());
+            var stockDto = stocks.Select(s => s.ToStockDto()).ToList();
             return Ok(stockDto);
         }
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using learn_api_c_sharp.Data;
 
@@ -11,9 +12,11 @@ using learn_api_c_sharp.Data;
 namespace learn_api_c_sharp.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241207045136_PortfolioManyToMany")]
+    partial class PortfolioManyToMany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,13 +54,13 @@ namespace learn_api_c_sharp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3499ad6c-fda7-4961-82cf-815e62f84759",
+                            Id = "83960141-4c4f-437a-9ee0-0630118c2798",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "3018fcea-5e34-493d-a3b6-895be5bc1e5b",
+                            Id = "10b35bc2-1527-4436-bbbb-9cd2026ab04c",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -246,9 +249,6 @@ namespace learn_api_c_sharp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -264,8 +264,6 @@ namespace learn_api_c_sharp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
 
                     b.HasIndex("StockId");
 
@@ -374,15 +372,9 @@ namespace learn_api_c_sharp.Migrations
 
             modelBuilder.Entity("learn_api_c_sharp.Models.Comment", b =>
                 {
-                    b.HasOne("learn_api_c_sharp.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId");
-
                     b.HasOne("learn_api_c_sharp.Models.Stock", "Stock")
                         .WithMany("Comments")
                         .HasForeignKey("StockId");
-
-                    b.Navigation("AppUser");
 
                     b.Navigation("Stock");
                 });

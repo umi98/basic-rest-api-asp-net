@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace learn_api_c_sharp.Models
 {
+    [Table("Stocks")]
     public class Stock
     {
         public int Id { get; set; }
@@ -18,5 +19,6 @@ namespace learn_api_c_sharp.Models
         public string Industry { get; set; } = string.Empty;
         public long MarketCap { get; set; }
         public List<Comment> Comments { get; set; } = [];
+        public List<Portfolio> Portfolios { get; set;} = [];
     }
 }
